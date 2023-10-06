@@ -4,6 +4,21 @@ conector = sqlite3.connect("LojaPecas.db")
 
 cursor = conector.cursor()
 
+try:
+	#drop table = exclui tabela
+	sql = "drop table TBL_CLIENTES"
+	cursor.execute(sql)
+	sql = "drop table TBL_PEDIDOS"
+	cursor.execute(sql)
+	sql = "drop table TBL_MERCADORIAS"
+	cursor.execute(sql)
+	sql = "drop table TBL_FORNECEDORES"
+	cursor.execute(sql)
+	sql = "drop table TBL_CONTATOS"
+	cursor.execute(sql)
+except sqlite3.OperationalError:
+	pass 
+
 sqlClientes = """CREATE TABLE TBL_CLIENTES 
 (ID_CLIENTE INTEGER PRIMARY KEY AUTOINCREMENT,
 NOME TEXT(100) NOT NULL,
